@@ -2,7 +2,7 @@ name: ML Model - 3 hyperparameter tuning per model
 
 on:
   push:
-    branches: [ hyper_branch ]
+    branches: [ reg_branch ]
 
 jobs:
   train:
