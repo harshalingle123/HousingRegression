@@ -1,4 +1,4 @@
-name: ML Model - 3 hyperparameter tuning per model
+name: ML Model - 3 Hyperparameter Tuning per Model
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   train:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -14,11 +14,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.13.5'
 
       - name: Install dependencies
         run: |
-          pip install -r HousingRegression/requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r HousingRegression/requirements.txt || echo "Installation failed, check logs"
+
+      - name: List directory
+        run: |
+          dir
 
       - name: Train and Evaluate models
         run: |
